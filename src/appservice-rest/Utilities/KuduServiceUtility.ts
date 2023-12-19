@@ -54,6 +54,8 @@ export class KuduServiceUtility {
         }
         catch(error) {
             core.error('Failed to deploy web package to App Service.');
+            console.log('内容: ' + error);
+            
             throw error;
         }
     }

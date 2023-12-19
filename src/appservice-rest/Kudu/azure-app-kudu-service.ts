@@ -208,7 +208,9 @@ export class Kudu {
         };
 
         try {
+            console.log('スタート: Kudu/azure-app-kudu-service.ts: zipDeploy()');            
             let response = await this._client.beginRequest(httpRequest, null, 'application/octet-stream');
+            console.log(`成功: ${JSON.stringify(response)}`);
             core.debug(`ZIP Deploy response: ${JSON.stringify(response)}`);
             if(response.statusCode == 200) {
                 core.debug('Deployment passed');

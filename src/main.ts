@@ -55,7 +55,8 @@ async function main(): Promise<void> {
             core.debug("Deployment Succeeded!");
             return
         case StateConstant.Failed:
-            core.setFailed("Deployment Failed!");
+            core.setFailed("Deployment Failed!!");
+            Logger.Info("テスト");
             return
         default:
             const expt = new UnexpectedExitException(actionManager.state);

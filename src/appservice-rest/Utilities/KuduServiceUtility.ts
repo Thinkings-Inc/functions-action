@@ -45,8 +45,11 @@ export class KuduServiceUtility {
                 'deployer=' + GITHUB_ZIP_DEPLOY
             ];
             var deploymentMessage = this._getUpdateHistoryRequest(null, null, customMessage).message;
+            console.log(`成功: ${deploymentMessage}`);
             queryParameters.push('message=' + encodeURIComponent(deploymentMessage));
+            console.log(`成功: ${queryParameters}`);
             let deploymentDetails = await this._webAppKuduService.zipDeploy(packagePath, queryParameters);
+            console.log(`成功: ${deploymentDetails}`);
             await this._processDeploymentResponse(deploymentDetails);
 
             console.log('Successfully deployed web package to App Service.');
@@ -54,7 +57,6 @@ export class KuduServiceUtility {
         }
         catch(error) {
             core.error('Failed to deploy web package to App Service.');
-            console.log('内容: ' + error);
             
             throw error;
         }

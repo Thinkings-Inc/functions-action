@@ -47,7 +47,7 @@ export class KuduServiceUtility {
             var deploymentMessage = this._getUpdateHistoryRequest(null, null, customMessage).message;
             console.log(`成功: ${deploymentMessage}`);
             queryParameters.push('message=' + encodeURIComponent(deploymentMessage));
-            console.log(`成功: ${queryParameters}`);
+            console.log(`成功_queryParameters: ${queryParameters}`);
             let deploymentDetails = await this._webAppKuduService.zipDeploy(packagePath, queryParameters);
             console.log(`成功: ${deploymentDetails}`);
             await this._processDeploymentResponse(deploymentDetails);

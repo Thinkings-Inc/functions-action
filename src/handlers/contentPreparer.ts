@@ -92,7 +92,14 @@ export class ContentPreparer implements IOrchestratable {
                 }
                 Logger.Info(`Will archive ${sourceLocation} into ${tempoaryFilePath} as function app content`);
                 try {
-                    return await archiveFolder(sourceLocation, "", tempoaryFilePath) as string;
+                    const contentPath: string = await archiveFolder(sourceLocation, "", tempoaryFilePath) as string;
+                    console.log(`アーカイブ成功: ${sourceLocation} => ${contentPath}`);
+                    
+                    const stats = require('fs').statSync(contentPath);
+                    const fileSizeInBytes = stats.size;
+                    console.log(`ファイルサイズ: ${fileSizeInBytes}`);
+                    
+                    return contentPath;
                 } catch (expt) {
                     throw new FileIOError(state, "Generate Publish Content", `Failed to archive ${sourceLocation}`, expt);
                 }
